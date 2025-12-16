@@ -1,0 +1,153 @@
+1. DNS Request (Domain Name System)
+
+When you type https://x.com/saraali20180/status/2001021876597088652?s=46 your browser cannot communicate directly using the domain name. Computers communicate using IP addresses.
+
+So the first step is a DNS lookup:
+
+The browser checks its cache to see if it already knows the IP address for google.com.
+
+If not found, it asks the operating system.
+
+If still not found, the request goes to a DNS resolver (usually provided by your ISP).
+
+The resolver queries DNS servers (root → TLD → authoritative DNS).
+
+The authoritative DNS server responds with Google’s IP address.
+
+Now the browser knows where to send the request.
+
+2. TCP/IP Connection
+
+Once the IP address is known, the browser establishes a connection using the TCP/IP protocol.
+
+This happens through the TCP three-way handshake:
+
+The client sends a SYN packet.
+
+The server responds with SYN-ACK.
+
+The client sends ACK.
+
+This handshake ensures that both sides are ready to send and receive data reliably.
+
+3. Firewall
+
+Before the request reaches Google’s servers, it passes through firewalls.
+
+Firewalls:
+
+Check if the request is allowed
+
+Block malicious traffic
+
+Protect internal networks
+
+Both the client side and server side may have firewalls that inspect and filter traffic.
+
+4. HTTPS / SSL (TLS Handshake)
+
+Because the URL starts with https, a secure connection is required.
+
+The browser performs an SSL/TLS handshake:
+
+The browser requests a secure connection.
+
+The server sends its SSL certificate.
+
+The browser verifies the certificate with a trusted Certificate Authority.
+
+A secure encryption key is established.
+
+After this, all data exchanged is encrypted, ensuring privacy and security.
+
+5. Load Balancer
+
+Google receives millions of requests per second, so requests do not go to a single server.
+
+A load balancer:
+
+Distributes incoming requests across multiple servers
+
+Improves performance
+
+Prevents server overload
+
+Increases availability
+
+The load balancer chooses the best server to handle your request.
+
+6. Web Server
+
+The request now reaches a web server (such as Nginx or Apache).
+
+The web server:
+
+Handles HTTP requests
+
+Serves static files (HTML, CSS, images)
+
+Forwards dynamic requests to the application server
+
+If the request requires dynamic content, it is passed to the application layer.
+
+7. Application Server
+
+The application server processes business logic.
+
+For Google, this includes:
+
+Understanding the request
+
+Processing search logic
+
+Communicating with databases
+
+Applying ranking algorithms
+
+The application server prepares the response data.
+
+8. Database
+
+If data is required, the application server queries the database.
+
+Databases store:
+
+Search indexes
+
+User data
+
+Configuration data
+
+The database responds with the requested data, which is then processed by the application server.
+
+9. Response Back to the Browser
+
+The application server sends the processed data back to the web server.
+The web server sends an HTTP response back through:
+
+Load balancer
+
+Secure TLS connection
+
+TCP/IP
+
+The browser receives the response.
+
+10. Browser Rendering
+
+Finally, the browser:
+
+Parses the HTML
+
+Builds the DOM and CSSOM
+
+Executes JavaScript
+
+Renders the page on the screen
+
+You now see Google’s homepage ready for interaction.
+
+Conclusion
+
+Typing a simple URL into a browser triggers a complex chain of events involving DNS, networking, security, servers, and databases.
+Understanding this flow demonstrates a strong foundation in web architecture and networking, which is essential for modern software engineering roles.
